@@ -1,0 +1,8 @@
+.product {
+    border: 1px solid lightgrey;
+    /* border-bottom-width: 0px; */
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding-bottom: 15px;
+}

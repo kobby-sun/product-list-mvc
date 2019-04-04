@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+    <RootNamespace>product_list</RootNamespace>
+  </PropertyGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="4.4.0" />
+    <PackageReference Include="Newtonsoft.Json" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Repositories\products.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="wwwroot\Products\product-1.jpg" />
+    <Content Include="wwwroot\Products\product-2.jpg" />
+    <Content Include="wwwroot\Products\product-3.jpg" />
+    <Content Include="wwwroot\Products\product-4.jpg" />
+    <Content Include="wwwroot\Products\product-5.jpg" />
+    <Content Include="wwwroot\Products\product-6.jpg" />
+    <Content Include="wwwroot\Products\product-7.jpg" />
+    <Content Include="wwwroot\Products\product-8.jpg" />
+  </ItemGroup>
+</Project>

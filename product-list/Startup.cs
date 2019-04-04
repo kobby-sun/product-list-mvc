@@ -12,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using product_list.Repositories;
+using product_list.Commands;
 using product_list.Controllers;
 
 namespace product_list
@@ -41,7 +42,7 @@ namespace product_list
             var builder = new ContainerBuilder();
 
             builder.RegisterType<ProductRepository>().As<IProductRepository>().SingleInstance();
-            builder.RegisterType<HomeController>().PropertiesAutowired();
+            builder.RegisterType<GetProductsCommand>().As<IGetProductsCommand>().SingleInstance();
 
             builder.Populate(services);
 

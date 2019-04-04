@@ -4,28 +4,21 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using product_list.Commands;
 using product_list.Models;
-using product_list.Repositories;
 
 namespace product_list.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IProductRepository productRepository;
-
-        public HomeController(
-            IProductRepository productRepository)
-        {
-            this.productRepository = productRepository;
-        }
         public IActionResult Index()
         {
             return Redirect("index.html");
         }
 
-        public IActionResult Products(string filter)
+        public Task<IActionResult> Products([FromRoute] string filter, [FromServices] IGetProductsCommand command)
         {
-            return Json(productRepository.GetProducts(filter));
+            return command.ExecuteAsync(filter);
         }
 
         public IActionResult Privacy()

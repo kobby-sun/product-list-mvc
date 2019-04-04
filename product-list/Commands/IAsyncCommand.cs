@@ -6,6 +6,6 @@ namespace product_list.Commands
 
     public interface IAsyncCommand<T>
     {
-        Task<IActionResult> ExecuteAsync(T parameter, CancellationToken cancellationToken = default);
+        Task<IActionResult> ExecuteAsync(T parameter);
     }
 }

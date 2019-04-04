@@ -16,7 +16,7 @@ namespace product_list.Commands
             this.productRepository = productRepository;
         }
 
-        public async Task<IActionResult> ExecuteAsync(string filter, CancellationToken cancellationToken)
+        public async Task<IActionResult> ExecuteAsync(string filter)
         {
             var list = await productRepository.GetProducts(filter);
 

@@ -25,7 +25,7 @@ class App extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { size: '', list: [], loading: false };
+    this.state = { size: '', list: [], loading: false, err: false };
   }
 
   componentWillMount() {
@@ -33,16 +33,22 @@ class App extends React.Component {
   }
 
   refresh() {
-    this.setState({ loading: true }, () => this.fetchProducts().then(list => this.setState({ list, loading: false })))
+    this.setState({ loading: true, err: false }, () => this.fetchProducts().then(list => this.setState({ list, loading: false })))
   }
 
   async fetchProducts() {
-    let list = await fetch('/Home/Products/' + this.state.size)
-    return list.json()
+    let rst = []
+    try {
+      let list = await fetch('/Home/Products/' + this.state.size)
+      rst = list.json()
+    } catch (ex) {
+      this.setState({ err: true })
+    }
+    return rst
   }
 
   render() {
-    const { list, loading } = this.state
+    const { list, loading, err } = this.state
 
     return <div className="container-fluid"><br />
 
@@ -69,7 +75,7 @@ class App extends React.Component {
 
       <div>
         {
-          loading ? 'Loading...' : <ProductList list={list} />
+          loading ? 'Loading...' : (err ? 'Failed to load products.' : <ProductList list={list} />)
         }
       </div>
     </div >
